@@ -55,12 +55,20 @@ function CheckBox() {
   )
 }
 
+const [dd, ee, ff, gg] = [
+  "pig",
+  "walrus",
+  "panda",
+  "snail"
+]
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <>
     <App lakes={lakes}/>
     <FoodApp food={food}/>
     <CheckBox />
+    <p>I like {ff}</p>
   </>
 )
 
