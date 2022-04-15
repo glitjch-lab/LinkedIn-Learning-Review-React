@@ -3,18 +3,20 @@ import ReactDOM from 'react-dom/client';
 // import './index.css';
 // import App from './App';
 
-function Hello () {
+function Hello (props) {
+  const propsCount = Object.keys(props).length
   return (
   <div>
-    <h1>Hello world</h1>
-    <p>welcome and please stay</p>
+    <h1>Hello {props.name}</h1>
+    <p>He is {props.age} years old, living in {props.country}.</p>
+    <p>There are {propsCount} props available</p>
   </div>
   )
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
- <Hello />
+ <Hello name="Bob" age="25" country="Canada"/>
 )
 
 
