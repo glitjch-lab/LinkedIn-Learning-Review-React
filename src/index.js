@@ -3,19 +3,25 @@ import ReactDOM from 'react-dom/client';
 // import './index.css';
 // import App from './App';
 
-function Hello ({name, age, country}) {
+const lakes = [
+  "Ontario",
+  "Superior",
+  "Erie",
+]
 
+function App({lakes}){
   return (
-  <div>
-    <h1>Hello {name}</h1>
-    <p>He is {age} years old, living in {country}.</p>
-  </div>
+    <ul>
+      {lakes.map(lake => {
+        return <li>{lake}</li>
+      })}
+    </ul>
   )
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
- <Hello name="Bob" age="25" country="Canada"/>
+  <App lakes={lakes}/>
 )
 
 
@@ -39,5 +45,5 @@ Notes:
 
 1.2. Babel is a tool working behind react that compiles JSX into compatible format for the browser. It's useful for also testing out code of different syntaxes when browsers do not support that syntax.
 1.3. Been a long time since making components within the index instead of importing external components. It's still an option, but not recommended!
-
+1.4. mapping usually needs a return statement, so don't always rely on implicit returns.
 */
