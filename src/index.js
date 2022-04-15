@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 // import './index.css';
 // import App from './App';
@@ -40,11 +40,27 @@ function FoodApp({food}) {
   )
 }
 
+function CheckBox() {
+  const [checked, setChecked] = useState(false)
+  return (
+    <>
+    <input
+      type="checkbox"
+      value={checked}
+      onChange={() => 
+        setChecked(checked => !checked)}
+    />
+    {checked ? "checked" : "unchecked"}
+    </>
+  )
+}
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <>
     <App lakes={lakes}/>
     <FoodApp food={food}/>
+    <CheckBox />
   </>
 )
 
