@@ -3,13 +3,12 @@ import ReactDOM from 'react-dom/client';
 // import './index.css';
 // import App from './App';
 
-function Hello (props) {
-  const propsCount = Object.keys(props).length
+function Hello ({name, age, country}) {
+
   return (
   <div>
-    <h1>Hello {props.name}</h1>
-    <p>He is {props.age} years old, living in {props.country}.</p>
-    <p>There are {propsCount} props available</p>
+    <h1>Hello {name}</h1>
+    <p>He is {age} years old, living in {country}.</p>
   </div>
   )
 }
