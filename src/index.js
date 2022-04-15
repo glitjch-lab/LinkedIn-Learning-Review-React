@@ -9,6 +9,12 @@ const lakes = [
   "Erie",
 ]
 
+const food = [
+  {id: 1, food: "pizza", cuisine: "Italian"},
+  {id: 2, food: "dumplings", cuisine: "Chinese"},
+  {id: 3, food: "Borsch", cuisine: "Ukrainian"}
+]
+
 function App({lakes}){
   return (
     <ul>
@@ -19,9 +25,27 @@ function App({lakes}){
   )
 }
 
+function FoodApp({food}) {
+  return (
+    <>
+      {food.map(fd => {
+        return (
+          <div key={fd.id}>
+            <h1 key={fd.id}>{fd.food}</h1>
+            <p>{fd.cuisine} " food"</p>
+          </div>
+        )
+      })}
+    </>
+  )
+}
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <App lakes={lakes}/>
+  <>
+    <App lakes={lakes}/>
+    <FoodApp food={food}/>
+  </>
 )
 
 
