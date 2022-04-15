@@ -3,14 +3,18 @@ import ReactDOM from 'react-dom/client';
 // import './index.css';
 // import App from './App';
 
-//  1.0
+function Hello () {
+  return (
+  <div>
+    <h1>Hello world</h1>
+    <p>welcome and please stay</p>
+  </div>
+  )
+}
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
-
-
-//   1.1
 root.render(
-  React.createElement("h1", null, "Hello World!"),
-  document.getElementById("root")
+ <Hello />
 )
 
 
@@ -31,4 +35,8 @@ Notes:
 
 1.1  When using ReactDOM.creatElement(), it takes 3 arguments in order: the element you want to render, it's properties, and any children or text.
       The children can also be more elements created using createElement()
+
+1.2. Babel is a tool working behind react that compiles JSX into compatible format for the browser. It's useful for also testing out code of different syntaxes when browsers do not support that syntax.
+1.3. Been a long time since making components within the index instead of importing external components. It's still an option, but not recommended!
+
 */
