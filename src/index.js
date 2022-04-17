@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 // import './index.css';
 // import App from './App';
@@ -62,6 +62,43 @@ const [dd, ee, ff, gg] = [
   "snail"
 ]
 
+function DemoUseEffect() {
+ const [phraseOne, setPhraseOne] = useState("")
+ const [phraseTwo, setPhraseTwo] = useState("")
+
+useEffect(() => {
+  console.log(phraseOne);
+  return () => {
+  }
+}, [phraseOne])
+
+useEffect(() => {
+  console.log(phraseTwo);
+  return () => {
+  }
+}, [phraseTwo])
+
+  return (
+    <>
+    <label>
+      Favorite Phrase: 
+      <input
+        value={phraseOne}
+        onChange={e => setPhraseOne(e.target.value)}
+        />
+    </label>
+    <br/>
+    <label>
+      Second Favorite Phrase:
+      <input
+        value={phraseTwo}
+        onChange={e => setPhraseTwo(e.target.value)}
+      />
+    </label>
+    </>
+  )
+}
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <>
@@ -69,17 +106,9 @@ root.render(
     <FoodApp food={food}/>
     <CheckBox />
     <p>I like {ff}</p>
+    <DemoUseEffect/>
   </>
 )
-
-
-
-// const root = ReactDOM.createRoot(document.getElementById('root'));
-// root.render(
-//   <React.StrictMode>
-//       Hello
-//   </React.StrictMode>
-// );
 
 
 /*
