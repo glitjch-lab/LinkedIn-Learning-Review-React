@@ -1,8 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import ReactDOM from 'react-dom/client';
-// import './index.css';
-// import App from './App';
+// Components and other files have been kept to a minimum 
+// to match the extensiveness of this course.
 
+import React, { useEffect, useReducer, useState } from 'react';
+import ReactDOM from 'react-dom/client';
+
+
+
+// Mapping out an array of objects (previously array of strings)
 const lakes = [
   "Ontario",
   "Superior",
@@ -15,24 +19,24 @@ const food = [
   {id: 3, food: "Borsch", cuisine: "Ukrainian"}
 ]
 
-function App({lakes}){
+function App(props = {lakes} ){
   return (
     <ul>
       {lakes.map(lake => {
-        return <li>{lake}</li>
+        return <li key={lake}>{lake}</li>
       })}
     </ul>
   )
 }
 
-function FoodApp({food}) {
+function FoodApp(props = {food}) {
   return (
     <>
       {food.map(fd => {
         return (
           <div key={fd.id}>
             <h1 key={fd.id}>{fd.food}</h1>
-            <p>{fd.cuisine} " food"</p>
+            <p>{fd.cuisine} food</p>
           </div>
         )
       })}
@@ -40,6 +44,9 @@ function FoodApp({food}) {
   )
 }
 
+
+
+// Demonstrating useState
 function CheckBox() {
   const [checked, setChecked] = useState(false)
   return (
@@ -55,6 +62,9 @@ function CheckBox() {
   )
 }
 
+
+
+// Destructuring arrays
 const [dd, ee, ff, gg] = [
   "pig",
   "walrus",
@@ -62,6 +72,9 @@ const [dd, ee, ff, gg] = [
   "snail"
 ]
 
+
+
+// Demonstrating multiple useEffects
 function DemoUseEffect() {
  const [phraseOne, setPhraseOne] = useState("")
  const [phraseTwo, setPhraseTwo] = useState("")
@@ -99,15 +112,15 @@ useEffect(() => {
   )
 }
 
-function GitHubUser({login}) {
+
+
+// Demonstrating useEffect with fetching data
+function GitHubUser(props = {login}) {
   const [data, setData] = useState("");
   useEffect(() => {
     fetch(`https://api.github.com/users/${login}`)
     .then(res => res.json())
-    .then(results => {
-      console.log(results);
-      setData(results)
-    })
+    .then(results => setData(results))
     .catch(error => console.log(error))
 
   }, []);
@@ -125,6 +138,27 @@ function GitHubUser({login}) {
   return null;
 }
 
+
+
+// Demonstrating useReduce 
+function DemoUseReduce() {
+  const [checked, toggle] = useReducer(
+    checked => !checked
+    )
+
+  return (
+    <>
+      <input
+        type="checkbox"
+        value={checked}
+        onChange={toggle}
+      />
+      {checked ? "checked" : "unchecked"}
+    </>
+  )
+}
+
+// VIEW
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <>
@@ -134,6 +168,8 @@ root.render(
     <p>I like {ff}</p>
     <DemoUseEffect/>
     <GitHubUser login="glitjch"/>
+    <br/>
+    <DemoUseReduce />
   </>
 )
 
