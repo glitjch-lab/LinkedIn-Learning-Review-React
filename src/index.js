@@ -99,6 +99,32 @@ useEffect(() => {
   )
 }
 
+function GitHubUser({login}) {
+  const [data, setData] = useState("");
+  useEffect(() => {
+    fetch(`https://api.github.com/users/${login}`)
+    .then(res => res.json())
+    .then(results => {
+      console.log(results);
+      setData(results)
+    })
+    .catch(error => console.log(error))
+
+  }, []);
+
+  if (data) {
+    return(
+      <>
+        <h1>
+          {data.login}
+        </h1>
+        <img src={data.avatar_url} width="100"/>
+      </>
+  )
+  }
+  return null;
+}
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <>
@@ -107,9 +133,9 @@ root.render(
     <CheckBox />
     <p>I like {ff}</p>
     <DemoUseEffect/>
+    <GitHubUser login="glitjch"/>
   </>
 )
-
 
 /*
 Notes:
