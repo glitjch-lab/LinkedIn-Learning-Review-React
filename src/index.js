@@ -17,24 +17,24 @@ const food = [
   {id: 3, food: "Borsch", cuisine: "Ukrainian"}
 ]
 
-function App({lakes}){
+function App(props = {lakes} ){
   return (
     <ul>
       {lakes.map(lake => {
-        return <li>{lake}</li>
+        return <li key={lake}>{lake}</li>
       })}
     </ul>
   )
 }
 
-function FoodApp({food}) {
+function FoodApp(props = {food}) {
   return (
     <>
       {food.map(fd => {
         return (
           <div key={fd.id}>
             <h1 key={fd.id}>{fd.food}</h1>
-            <p>{fd.cuisine} " food"</p>
+            <p>{fd.cuisine} food</p>
           </div>
         )
       })}
